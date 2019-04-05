@@ -1,0 +1,17 @@
+.Searches {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.Searches li {
+  background-color: blue;
+  border-radius: 0.25rem;
+  color: white;
+  cursor: pointer;
+  font-size: 0.75rem;
+  margin: 0.25rem;
+  padding: 0.25rem 0.5rem;
+}
