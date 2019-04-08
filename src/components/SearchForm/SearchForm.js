@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 
 import './SearchForm.css'
 
-class SearchForm extends Component {
-  state = {
-    query: ''
-  }
+import { ReactComponent as SearchIcon } from '../../images/icons/search.svg'
 
+class SearchForm extends Component {
   changeHandler = e => {
-    this.setState({ query: e.target.value })
+    let query = e.target.value.trim()
+    if (e.target.value !== '') {
+      this.setState({ query: query })
+    }
   }
 
   submitHandler = e => {
@@ -28,7 +29,9 @@ class SearchForm extends Component {
             placeholder="e.g. water" />
         </label>
 
-        <button type="submit"></button>
+        <button type="submit">
+          <SearchIcon height="24" width="24" />
+        </button>
       </form>
     )
   }

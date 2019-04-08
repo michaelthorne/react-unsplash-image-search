@@ -1,0 +1,7 @@
+.Photo {
+  border-radius: 0.25rem;
+}
+
+.Photo img {
+  max-width: 100%;
+}

@@ -1,16 +1,44 @@
 .SearchForm {
+  align-items: center;
+  border-radius: 0.25rem;
+  border: 0.25rem solid #ddd;
+  display: flex;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  transition: border-color 0.25s;
+}
 
+.SearchForm:focus-within {
+  border-color: #7fdbff;
+}
+
+.SearchForm label {
+  justify-content: flex-start;
+  display: flex;
+  flex: 1 1 100%;
 }
 
 .SearchForm input {
-  border-radius: 0.25em;
-  border: 0.125em solid #ccc;
-  padding: 1em;
+  border: 0;
+  flex: 1;
+  line-height: 1.5;
   transition: box-shadow 0.25s;
 }
 
 .SearchForm input:focus,
 .SearchForm input:hover {
-  box-shadow: 0 0 0 0.25em rgba(0,0,0, 0.1);
+  outline: none;
+}
+
+.SearchForm button[type="submit"] {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  flex: 1 1 auto;
+}
+
+.SearchForm button[type="submit"]:focus,
+.SearchForm button[type="submit"]:hover {
   outline: none;
 }
