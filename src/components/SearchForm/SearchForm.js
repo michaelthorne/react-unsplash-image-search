@@ -28,7 +28,7 @@ class SearchForm extends Component {
             placeholder="e.g. water" />
         </label>
 
-        <button type="submit">Search</button>
+        <button type="submit"></button>
       </form>
     )
   }

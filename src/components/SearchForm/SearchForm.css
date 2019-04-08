@@ -1,3 +1,16 @@
 .SearchForm {
 
 }
+
+.SearchForm input {
+  border-radius: 0.25em;
+  border: 0.125em solid #ccc;
+  padding: 1em;
+  transition: box-shadow 0.25s;
+}
+
+.SearchForm input:focus,
+.SearchForm input:hover {
+  box-shadow: 0 0 0 0.25em rgba(0,0,0, 0.1);
+  outline: none;
+}

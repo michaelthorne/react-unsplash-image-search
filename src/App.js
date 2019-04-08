@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import unsplash from './api/unsplash'
 import SearchForm from './components/SearchForm/SearchForm'
-import SearchTerms from './components/Searches/SearchTerms'
+import SearchTerms from './components/SearchTerms/SearchTerms'
 import Loader from './components/Loader/Loader'
 
 import './App.css'
@@ -21,11 +21,7 @@ class App extends Component {
       }
     })
       .then(response => {
-        this.setState((prevState) => {
-          return {
-            photo: response,
-          }
-        })
+        this.setState({ photo: response })
       })
       .catch(error => {
         // TODO: add proper error handling
