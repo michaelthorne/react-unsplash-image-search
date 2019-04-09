@@ -1,5 +1,4 @@
 .SearchTerms {
-  margin-bottom: 1rem;
   margin-top: 1rem;
 }
 
@@ -12,7 +11,9 @@
 }
 
 .SearchTerms-list li {
+  color: #aaa;
   font-size: 0.75rem;
+  font-weight: bold;
   margin-right: 0.5rem;
 }
 
@@ -23,30 +24,32 @@
 }
 
 .SearchTerms-search span {
-  background-color: #ddd;
+  background-color: #7fdbff;
   border: 0;
   border-bottom-left-radius: 0.25rem;
   border-top-left-radius: 0.25rem;
-  color: #001f3f;
+  color: #111;
   cursor: pointer;
   display: block;
   font-size: 0.75rem;
+  font-weight: normal;
   padding: 0.25rem 0.5rem;
   transition: background-color 0.25s;
 }
 
 .SearchTerms-search span:focus,
 .SearchTerms-search span:hover {
-  background-color: #7fdbff;
+  background-color: #0074d9;
+  color: #fff;
 }
 
 .SearchTerms-search button,
 .SearchTerms-search button {
-  background-color: #ddd;
+  background-color: #7fdbff;
   border: 0;
   border-bottom-right-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
-  color: #001f3f;
+  color: #111;
   cursor: pointer;
   padding: 0.25rem 0.5rem;
   transition: background-color 0.25s;

@@ -20,11 +20,7 @@ class App extends Component {
    * @param event
    */
   inputChangeHandler = (event) => {
-    let query = event.target.value.trim()
-
-    if (event.target.value !== '') {
-      this.setState({ query: query })
-    }
+    this.setState({ query: event.target.value.trim() })
   }
 
   /**
@@ -122,9 +118,7 @@ class App extends Component {
             submitHandler={this.submitHandler}
             inputChangeHandler={this.inputChangeHandler}
             query={this.state.query} />
-        </section>
 
-        <section className="App-section">
           <SearchTerms
             searchTerms={this.state.searchTerms}
             searchTermsHandler={this.searchTermsHandler}
