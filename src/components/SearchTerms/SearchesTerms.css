@@ -1,9 +1,10 @@
 .SearchTerms {
-  margin-bottom: 1em;
-  margin-top: 1em;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
 }
 
 .SearchTerms-list {
+  align-items: center;
   display: flex;
   list-style: none;
   margin: 0;
@@ -11,31 +12,48 @@
 }
 
 .SearchTerms-list li {
-  margin-right: 0.5em;
-}
-
-.SearchTerms-list div {
-  background-color: #0074d9;
-  border: 0;
-  border-radius: 0.25rem;
-  color: #fff;
-  cursor: pointer;
   font-size: 0.75rem;
-  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
 }
 
-.SearchTerms-list button,
-.SearchTerms-list button {
-  background-color: transparent;
+.SearchTerms-search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.SearchTerms-search span {
+  background-color: #ddd;
   border: 0;
+  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 0.25rem;
   color: #001f3f;
   cursor: pointer;
-  margin-left: 0.5rem;
-  padding: 0;
+  display: block;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  transition: background-color 0.25s;
+}
+
+.SearchTerms-search span:focus,
+.SearchTerms-search span:hover {
+  background-color: #7fdbff;
+}
+
+.SearchTerms-search button,
+.SearchTerms-search button {
+  background-color: #ddd;
+  border: 0;
+  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  color: #001f3f;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  transition: background-color 0.25s;
 }
 
 .SearchTerms-list button:focus,
 .SearchTerms-list button:hover {
-  color: #fff;
+  background-color: #ff4136;
   outline: none;
 }

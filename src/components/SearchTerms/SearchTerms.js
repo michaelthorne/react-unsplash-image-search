@@ -11,6 +11,7 @@ const SearchTerms = (props) => {
     searchTerms = (
       <div className="SearchTerms">
         <ul className="SearchTerms-list">
+          <li>Previous:</li>
           {props.searchTerms.map((searchTerm, index) => (
             <li key={index}>
               <div
@@ -20,7 +21,7 @@ const SearchTerms = (props) => {
                 <button
                   className="SearchTerms-remove"
                   onClick={props.removeSearchTermHandler(searchTerm)}>
-                  <CloseIcon height="5" width="5" />
+                  <CloseIcon height="8" width="8" />
                 </button>
               </div>
             </li>

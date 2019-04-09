@@ -93,7 +93,21 @@ class App extends Component {
       searchTerms: prevState.searchTerms.filter(previousSearchTerm =>
         previousSearchTerm !== searchTerm
       )
-    }))
+    }), () => {
+      if (this.state.searchTerms.length === 0) {
+        this.clearSearch()
+      }
+    })
+  }
+
+  /**
+   * Clear Search
+   */
+  clearSearch = () => {
+    this.setState({
+      photo: null,
+      query: ''
+    })
   }
 
   render () {
