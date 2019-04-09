@@ -1,24 +1,25 @@
 import React from 'react'
-import Loader from '../Loader/Loader'
-
 import './Photo.css'
+import Loader from '../Loader/Loader'
 
 const Photo = (props) => {
   let image = null
 
-  if (props.searching) {
-    image = <Loader />
-  }
-
   if (props.photo) {
     image = (
-      <img src={props.photo.data.urls.regular} alt="" />
+      <img
+        className="Photo-image"
+        src={props.photo.data.urls.regular} alt={props.photo.data.description} />
     )
   }
+
   return (
-    <div className="Photo">
-      {image}
-    </div>
+    <React.Fragment>
+      <Loader show={props.searching} />
+      <div className="Photo">
+        {image}
+      </div>
+    </React.Fragment>
   )
 }
 

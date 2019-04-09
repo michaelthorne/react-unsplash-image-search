@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
-
 import unsplash from './api/unsplash'
-import SearchForm from './components/SearchForm/SearchForm'
-import SearchTerms from './components/SearchTerms/SearchTerms'
+import History from './components/History/History'
 import Photo from './components/Photo/Photo'
-
+import Search from './components/Search/Search'
 import './App.css'
 
 class App extends Component {
   state = {
+    history: [],
     photo: null,
     query: '',
-    searchTerms: [],
     searching: false,
   }
 
@@ -32,6 +30,7 @@ class App extends Component {
 
     if (this.state.query !== '') {
       this.searchHandler(this.state.query)
+      this.setState({ searching: true })
     }
   }
 
@@ -46,12 +45,11 @@ class App extends Component {
       }
     })
       .then(response => {
-        console.log(response)
-
         this.setState((prevState) => {
           return {
+            history: [...new Set([...prevState.history, query])], // Only add unique queries,
             photo: response,
-            searchTerms: [...new Set([...prevState.searchTerms, query])], // Only add unique search terms
+            searching: false,
           }
         })
       })
@@ -59,38 +57,39 @@ class App extends Component {
         // TODO: add proper error handling
         console.log(error.response)
 
-        this.setState((prevState) => {
-          return {
-            photo: null,
-            searching: !!prevState.searching,
-          }
+        this.setState({
+          photo: null,
+          searching: false,
         })
       })
   }
 
   /**
-   * Search Terms
-   * @param searchTerm
+   * Search for an item from the history
+   * @param query
    * @returns {Function}
    */
-  searchTermsHandler = (searchTerm) => (event) => {
-    this.setState({ query: searchTerm }, () => {
-      this.searchHandler(searchTerm)
+  historyHandler = (query) => () => {
+    this.setState({
+      query: query,
+      searching: true
+    }, () => {
+      this.searchHandler(query)
     })
   }
 
   /**
-   * Remove a Search Term
-   * @param searchTerm
+   * Remove an item from the history
+   * @param query
    * @returns {Function}
    */
-  removeSearchTermHandler = (searchTerm) => () => {
+  removeHistoryHandler = (query) => () => {
     this.setState((prevState) => ({
-      searchTerms: prevState.searchTerms.filter(previousSearchTerm =>
-        previousSearchTerm !== searchTerm
+      history: prevState.history.filter(previousQuery =>
+        previousQuery !== query
       )
     }), () => {
-      if (this.state.searchTerms.length === 0) {
+      if (this.state.history.length === 0) {
         this.clearSearch()
       }
     })
@@ -114,15 +113,15 @@ class App extends Component {
         </section>
 
         <section className="App-section">
-          <SearchForm
+          <Search
             submitHandler={this.submitHandler}
             inputChangeHandler={this.inputChangeHandler}
             query={this.state.query} />
 
-          <SearchTerms
-            searchTerms={this.state.searchTerms}
-            searchTermsHandler={this.searchTermsHandler}
-            removeSearchTermHandler={this.removeSearchTermHandler} />
+          <History
+            history={this.state.history}
+            historyHandler={this.historyHandler}
+            removeHistoryHandler={this.removeHistoryHandler} />
         </section>
 
         <section className="App-section">

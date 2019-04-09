@@ -1,0 +1,18 @@
+.History {
+  margin-top: 1rem;
+}
+
+.History-list {
+  align-items: center;
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.History-item {
+  color: #111;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
