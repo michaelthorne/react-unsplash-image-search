@@ -3,10 +3,6 @@
   margin-top: 1em;
 }
 
-.SearchTerms-title {
-  font-size: 0.875rem;
-}
-
 .SearchTerms-list {
   display: flex;
   list-style: none;
@@ -15,7 +11,7 @@
 }
 
 .SearchTerms-list li {
-  margin: 0.25rem;
+  margin-right: 0.5em;
 }
 
 .SearchTerms-list div {

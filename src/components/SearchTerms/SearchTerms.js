@@ -10,15 +10,16 @@ const SearchTerms = (props) => {
   if (props.searchTerms.length > 0) {
     searchTerms = (
       <div className="SearchTerms">
-        <h2 className="SearchTerms-title">Your previous search terms:</h2>
         <ul className="SearchTerms-list">
           {props.searchTerms.map((searchTerm, index) => (
             <li key={index}>
               <div
-                className="SearchTerms-search"
-                onClick={props.searchTermsHandler(searchTerm)}
-              >{searchTerm}
-                <button className="SearchTerms-remove">
+                className="SearchTerms-search">
+                <span
+                  onClick={props.searchTermsHandler(searchTerm)}>{searchTerm}</span>
+                <button
+                  className="SearchTerms-remove"
+                  onClick={props.removeSearchTermHandler(searchTerm)}>
                   <CloseIcon height="5" width="5" />
                 </button>
               </div>
