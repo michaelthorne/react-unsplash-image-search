@@ -90,8 +90,8 @@ class App extends Component {
    */
   removeSearchTermHandler = (searchTerm) => () => {
     this.setState((prevState) => ({
-      searchTerms: prevState.searchTerms.filter(el =>
-        el !== searchTerm
+      searchTerms: prevState.searchTerms.filter(previousSearchTerm =>
+        previousSearchTerm !== searchTerm
       )
     }))
   }
