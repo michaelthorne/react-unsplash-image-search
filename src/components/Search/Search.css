@@ -1,15 +1,14 @@
 .Search {
-  align-items: center;
   background-color: #fff;
   border-radius: 0.25rem;
-  border: 0.125rem solid #0074d9;
+  border: 0.125rem solid #ddd;
   display: flex;
   margin-bottom: 1rem;
   transition: box-shadow 0.25s;
 }
 
 .Search:focus-within {
-  box-shadow: 0 0.25rem 0.5rem 0 rgba(0,0,0, 0.25);
+  box-shadow: 0 0 0 0.25rem #0074d9;
 }
 
 .Search-label {

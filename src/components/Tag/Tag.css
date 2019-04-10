@@ -1,6 +1,6 @@
 .Tag {
   align-items: center;
-  background-color: #ddd;
+  background-color: #0074d9;
   border-radius: 0.25rem;
   display: flex;
   justify-content: center;
@@ -8,7 +8,7 @@
 }
 
 .Tag-title {
-  background-color: #ddd;
+  background-color: #7fdbff;
   border: 0;
   color: #111;
   cursor: pointer;
@@ -16,7 +16,7 @@
   font-size: 0.75rem;
   font-weight: normal;
   padding: 0.25rem 0.5rem;
-  transition: background-color 0.25s;
+  transition: background-color 0.25s, color 0.25s;
 }
 
 .Tag-title:focus,
@@ -28,7 +28,7 @@
 
 .Tag-remove,
 .Tag-remove {
-  background-color: #ddd;
+  background-color: #7fdbff;
   border: 0;
   color: #111;
   cursor: pointer;
