@@ -14,8 +14,10 @@ const Search = (props) => {
           placeholder="e.g. water"
           type="text"
           className="Search-input"
+          defaultValue={props.query}
           onChange={props.inputChangeHandler}
-          value={props.query} />
+          ref={props.setRef}
+        />
       </label>
 
       <button

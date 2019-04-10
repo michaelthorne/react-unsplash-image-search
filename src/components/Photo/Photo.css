@@ -6,6 +6,10 @@
   z-index: 5;
 }
 
+.Photo-link {
+  display: block;
+}
+
 .Photo-image {
   display: block;
   max-width: 100%;

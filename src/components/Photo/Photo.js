@@ -3,22 +3,33 @@ import './Photo.css'
 import Loader from '../Loader/Loader'
 
 const Photo = (props) => {
-  let image = null
+  let loader = null
+  let photo = null
+
+  if (props.searching) {
+    loader = <Loader show={props.searching} />
+  }
 
   if (props.photo) {
-    image = (
-      <img
-        className="Photo-image"
-        src={props.photo.data.urls.regular} alt={props.photo.data.description} />
+    photo = (
+      <div className="Photo">
+        <a
+          className="Photo-link"
+          href={props.photo.data.links.html}
+          target="_blank" rel="noopener noreferrer">
+          <img
+            className="Photo-image"
+            src={props.photo.data.urls.regular} alt={props.photo.data.description}
+          />
+        </a>
+      </div>
     )
   }
 
   return (
     <React.Fragment>
-      <Loader show={props.searching} />
-      <div className="Photo">
-        {image}
-      </div>
+      {loader}
+      {photo}
     </React.Fragment>
   )
 }

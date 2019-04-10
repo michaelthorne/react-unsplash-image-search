@@ -1,24 +1,23 @@
 import React, { Component } from 'react'
 import unsplash from './api/unsplash'
+import Error from './components/Error/Error'
 import History from './components/History/History'
 import Photo from './components/Photo/Photo'
 import Search from './components/Search/Search'
 import './App.css'
 
 class App extends Component {
+  constructor (props) {
+    super(props)
+    this.searchInput = React.createRef()
+  }
+
   state = {
+    errors: [],
     history: [],
     photo: null,
     query: '',
     searching: false,
-  }
-
-  /**
-   * Input Change Handler
-   * @param event
-   */
-  inputChangeHandler = (event) => {
-    this.setState({ query: event.target.value.trim() })
   }
 
   /**
@@ -28,9 +27,14 @@ class App extends Component {
   submitHandler = (event) => {
     event.preventDefault()
 
-    if (this.state.query !== '') {
-      this.searchHandler(this.state.query)
-      this.setState({ searching: true })
+    let query = this.searchInput.current.value
+
+    if (query !== '') {
+      this.searchHandler(query)
+      this.setState({
+        query: query,
+        searching: true
+      })
     }
   }
 
@@ -47,17 +51,17 @@ class App extends Component {
       .then(response => {
         this.setState((prevState) => {
           return {
-            history: [...new Set([...prevState.history, query])], // Only add unique queries,
+            errors: [],
+            history: [...new Set([...prevState.history, query])], // Only add unique queries
             photo: response,
             searching: false,
           }
         })
       })
       .catch(error => {
-        // TODO: add proper error handling
-        console.log(error.response)
-
+        // TODO: implement proper error handling
         this.setState({
+          errors: JSON.parse(error.response.request.response).errors,
           photo: null,
           searching: false,
         })
@@ -99,6 +103,7 @@ class App extends Component {
    * Clear Search
    */
   clearSearch = () => {
+    this.searchInput.current.value = ''
     this.setState({
       photo: null,
       query: ''
@@ -114,20 +119,23 @@ class App extends Component {
 
         <section className="App-section">
           <Search
+            setRef={this.searchInput}
             submitHandler={this.submitHandler}
-            inputChangeHandler={this.inputChangeHandler}
-            query={this.state.query} />
-
+            query={this.state.query}
+          />
           <History
             history={this.state.history}
             historyHandler={this.historyHandler}
-            removeHistoryHandler={this.removeHistoryHandler} />
+            removeHistoryHandler={this.removeHistoryHandler}
+          />
         </section>
 
         <section className="App-section">
+          <Error errors={this.state.errors} />
           <Photo
             photo={this.state.photo}
-            searching={this.state.searching} />
+            searching={this.state.searching}
+          />
         </section>
       </main>
     )
