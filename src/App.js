@@ -16,6 +16,7 @@ class App extends Component {
     errors: [],
     history: [],
     photo: null,
+    placeholder: 'e.g. water',
     query: '',
     searching: false,
   }
@@ -27,7 +28,7 @@ class App extends Component {
   submitHandler = (event) => {
     event.preventDefault()
 
-    let query = this.searchInput.current.value
+    let query = this.searchInput.current.value.trim()
 
     if (query !== '') {
       this.searchHandler(query)
@@ -120,19 +121,20 @@ class App extends Component {
 
         <section className="App-section">
           <Search
-            setRef={this.searchInput}
-            submitHandler={this.submitHandler}
+            placeholder={this.state.placeholder}
             query={this.state.query}
+            setSearchInputRef={this.searchInput}
+            submitHandler={this.submitHandler}
           />
           <History
             history={this.state.history}
             historyHandler={this.historyHandler}
             removeHistoryHandler={this.removeHistoryHandler}
           />
+          <Error errors={this.state.errors} />
         </section>
 
-        <section className="App-section">
-          <Error errors={this.state.errors} />
+        <section className="App-section App-section--full">
           <Photo
             photo={this.state.photo}
             searching={this.state.searching}

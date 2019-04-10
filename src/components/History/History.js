@@ -9,7 +9,7 @@ const History = (props) => {
     history = (
       <div className="History">
         <ul className="History-list">
-          <li className="History-item">Previous:</li>
+          <li className="History-item">History:</li>
           {props.history.map((query, index) => (
             <li
               className="History-item"

@@ -11,12 +11,11 @@ const Search = (props) => {
         <input
           id="query"
           name="query"
-          placeholder="e.g. water"
+          placeholder={props.placeholder}
           type="text"
           className="Search-input"
           defaultValue={props.query}
-          onChange={props.inputChangeHandler}
-          ref={props.setRef}
+          ref={props.setSearchInputRef}
         />
       </label>
 

@@ -18,6 +18,11 @@
   position: relative;
 }
 
+.App-section--full {
+  max-width: 100%;
+  text-align: center;
+}
+
 @media all and (min-width: 45rem) {
   .App {
     padding-bottom: 4rem;
