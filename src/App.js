@@ -74,6 +74,7 @@ class App extends Component {
    * @returns {Function}
    */
   historyHandler = (query) => () => {
+    this.searchInput.current.value = query
     this.setState({
       query: query,
       searching: true

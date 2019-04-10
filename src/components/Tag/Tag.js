@@ -5,11 +5,11 @@ import './Tag.css'
 const Tag = (props) => {
   return (
     <div className="Tag">
-      <span
+      <button
         className="Tag-title"
         onClick={props.historyHandler(props.title)}
         tabIndex="0"
-      >{props.title}</span>
+      >{props.title}</button>
       <button
         className="Tag-remove"
         onClick={props.removeHistoryHandler(props.title)}>

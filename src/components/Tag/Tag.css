@@ -1,14 +1,15 @@
 .Tag {
-  display: flex;
   align-items: center;
+  background-color: #ddd;
+  border-radius: 0.25rem;
+  display: flex;
   justify-content: center;
+  overflow: hidden;
 }
 
 .Tag-title {
   background-color: #ddd;
   border: 0;
-  border-bottom-left-radius: 0.25rem;
-  border-top-left-radius: 0.25rem;
   color: #111;
   cursor: pointer;
   display: block;
@@ -29,8 +30,6 @@
 .Tag-remove {
   background-color: #ddd;
   border: 0;
-  border-bottom-right-radius: 0.25rem;
-  border-top-right-radius: 0.25rem;
   color: #111;
   cursor: pointer;
   padding: 0.25rem 0.5rem;
