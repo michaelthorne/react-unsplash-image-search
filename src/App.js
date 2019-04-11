@@ -16,8 +16,10 @@ class App extends Component {
     errors: [],
     history: [],
     photo: null,
-    placeholder: 'e.g. water',
-    query: '',
+    query: {
+      placeholder: 'e.g. water',
+      search: ''
+    },
     searching: false,
   }
 
@@ -28,12 +30,14 @@ class App extends Component {
   submitHandler = (event) => {
     event.preventDefault()
 
-    let query = this.searchInput.current.value.trim()
+    let search = this.searchInput.current.value.trim()
 
-    if (query !== '') {
-      this.searchHandler(query)
+    if (search !== '') {
+      this.searchHandler(search)
       this.setState({
-        query: query,
+        query: {
+          search: search
+        },
         searching: true
       })
     }
@@ -41,19 +45,19 @@ class App extends Component {
 
   /**
    * Search Handler
-   * @param query
+   * @param search
    */
-  searchHandler = (query) => {
+  searchHandler = (search) => {
     unsplash.get('/photos/random', {
       params: {
-        'query': query
+        'query': search
       }
     })
       .then(response => {
         this.setState((prevState) => {
           return {
             errors: [],
-            history: [...new Set([...prevState.history, query])], // Only add unique queries
+            history: [...new Set([...prevState.history, search])], // Only add unique queries
             photo: response,
             searching: false,
           }
@@ -71,28 +75,30 @@ class App extends Component {
 
   /**
    * Search for an item from the history
-   * @param query
+   * @param search
    * @returns {Function}
    */
-  historyHandler = (query) => () => {
-    this.searchInput.current.value = query
+  historyHandler = (search) => () => {
+    this.searchInput.current.value = search
     this.setState({
-      query: query,
+      query: {
+        search: search
+      },
       searching: true
     }, () => {
-      this.searchHandler(query)
+      this.searchHandler(search)
     })
   }
 
   /**
    * Remove an item from the history
-   * @param query
+   * @param search
    * @returns {Function}
    */
-  removeHistoryHandler = (query) => () => {
+  removeHistoryHandler = (search) => () => {
     this.setState((prevState) => ({
       history: prevState.history.filter(previousQuery =>
-        previousQuery !== query
+        previousQuery !== search
       )
     }), () => {
       if (this.state.history.length === 0) {
@@ -108,7 +114,9 @@ class App extends Component {
     this.searchInput.current.value = ''
     this.setState({
       photo: null,
-      query: ''
+      query: {
+        search: ''
+      }
     })
   }
 
@@ -122,7 +130,7 @@ class App extends Component {
         <section className="App-section">
           <Search
             placeholder={this.state.placeholder}
-            query={this.state.query}
+            query={this.state.query.search}
             setSearchInputRef={this.searchInput}
             submitHandler={this.submitHandler}
           />

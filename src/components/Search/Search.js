@@ -7,14 +7,14 @@ const Search = (props) => {
     <form onSubmit={props.submitHandler} className="Search">
       <label
         className="Search-label"
-        htmlFor="query">
+        htmlFor="search">
         <input
-          id="query"
-          name="query"
-          placeholder={props.placeholder}
+          id="search"
+          name="search"
+          placeholder={props.query.placeholder}
           type="text"
           className="Search-input"
-          defaultValue={props.query}
+          defaultValue={props.query.search}
           ref={props.setSearchInputRef}
         />
       </label>
